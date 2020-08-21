@@ -9,6 +9,11 @@ local function winner(board)
 	if board[1][1] ~= '' and board[1][1] == board[2][1] and board[2][1] == board[3][1] then
 		return board[1][1]
 	end
+	for i=1,3 do
+		if board[1][i] ~= '' and board[1][i] == board[2][i] and board[2][i] == board[3][i] then
+			return board[1][i]
+		end
+	end
 	return nil
 end
 
@@ -68,6 +73,13 @@ function testWinDetection()
 		{'O', '', ''},
 	}
 	lu.assertEquals(winner(fullColumn), 'O')
+
+	fullMiddleColumn = {
+		{'', 'O', ''},
+		{'', 'O', ''},
+		{'', 'O', ''},
+	}
+	lu.assertEquals(winner(fullMiddleColumn), 'O')
 end
 
 os.exit(lu.LuaUnit.run())
