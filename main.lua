@@ -6,7 +6,7 @@ function love.load()
 	cellWidth = VW/3
 	cellHeight = VH/3
 
-	board = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}
+	board = {{'', '', ''}, {'', 'X', ''}, {'', '', ''}}
 	selected = {x = 0, y = 0}
 end
 
@@ -29,7 +29,7 @@ function love.keypressed(key)
 		local x = selected.x + 1
 		local y = selected.y + 1
 		local currentValue = board[x][y]
-		board[x][y] = (currentValue == 0 and 1) or 0
+		board[x][y] = (currentValue == '' and 'X') or ''
 	end
 end
 
@@ -62,7 +62,7 @@ function love.draw()
 			love.graphics.rectangle('line', x*cellWidth, y*cellHeight, cellWidth, cellHeight)
 
 			local gridValue = board[x+1][y+1]
-			if gridValue == 1 then
+			if gridValue == 'X' then
 				drawCross(x, y)
 			end
 
