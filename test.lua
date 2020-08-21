@@ -7,6 +7,9 @@ local function winner(board)
 	if board[2][1] == 'X' then
 		return 'X'
 	end
+	if board[3][1] == 'X' then
+		return 'X'
+	end
 	return nil
 end
 
@@ -34,8 +37,8 @@ function testWinDetection()
 
 	fullRow3 = {
 		{'', '', ''},
-		{'X', 'X', 'X'},
 		{'', '', ''},
+		{'X', 'X', 'X'},
 	}
 	lu.assertEquals(winner(fullRow3), 'X')
 end
