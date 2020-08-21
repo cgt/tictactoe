@@ -15,13 +15,13 @@ end
 
 function love.keypressed(key)
 	if key == 'h' or key == 'left' then
-		selected.y = clamp(selected.y - 1)
-	elseif key == 'j' or key == 'down' then
-		selected.x = clamp(selected.x + 1)
-	elseif key == 'k' or key == 'up' then
 		selected.x = clamp(selected.x - 1)
-	elseif key == 'l' or key == 'right' then
+	elseif key == 'j' or key == 'down' then
 		selected.y = clamp(selected.y + 1)
+	elseif key == 'k' or key == 'up' then
+		selected.y = clamp(selected.y - 1)
+	elseif key == 'l' or key == 'right' then
+		selected.x = clamp(selected.x + 1)
 	elseif key == 'enter' then
 		local x = selected.x + 1
 		local y = selected.y + 1
@@ -44,16 +44,23 @@ local function setHighlightColor()
 	love.graphics.setColor(0.16, 0.32, 0.75)
 end
 
+local function setDefaults()
+	setDefaultColor()
+	love.graphics.setLineWidth(1)
+end
+
 function love.draw()
 	local cellWidth = VW/3
 	local cellHeight = VH/3
 	for x=0,2 do
 		for y=0,2 do
+			setDefaults()
 			local gridValue = grid[x+1][y+1]
-			setDefaultColor()
 			love.graphics.rectangle('line', x*cellWidth, y*cellHeight, cellWidth, cellHeight)
 			if gridValue == 1 then
+				love.graphics.setLineWidth(2)
 				love.graphics.circle('line', (x+cellWidth)/2, (y+cellHeight)/2, cellWidth*0.25)
+				setDefaults()
 			end
 			if x == selected.x and y == selected.y then
 				setSelectionColor()
