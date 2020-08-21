@@ -8,6 +8,7 @@ function love.load()
 
 	board = {{'', '', ''}, {'', 'X', ''}, {'', '', 'O'}}
 	selected = {x = 0, y = 0}
+	player = 'X'
 end
 
 local function clamp(n)
@@ -29,7 +30,10 @@ function love.keypressed(key)
 		local x = selected.x + 1
 		local y = selected.y + 1
 		local currentValue = board[x][y]
-		board[x][y] = (currentValue == '' and 'X') or ''
+		if currentValue == '' then
+			board[x][y] = player
+			player = (player == 'X' and 'O') or 'X'
+		end
 	end
 end
 
