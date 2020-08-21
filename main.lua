@@ -3,7 +3,7 @@ function love.load()
 	VH = 600
 	love.window.setMode(VW, VH)
 
-	grid = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}
+	board = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}
 	selected = {x = 0, y = 0}
 end
 
@@ -25,8 +25,8 @@ function love.keypressed(key)
 	elseif key == 'return' then
 		local x = selected.x + 1
 		local y = selected.y + 1
-		local currentValue = grid[x][y]
-		grid[x][y] = (currentValue == 0 and 1) or 0
+		local currentValue = board[x][y]
+		board[x][y] = (currentValue == 0 and 1) or 0
 	end
 end
 
@@ -54,7 +54,7 @@ function love.draw()
 			setDefaults()
 			love.graphics.rectangle('line', x*cellWidth, y*cellHeight, cellWidth, cellHeight)
 
-			local gridValue = grid[x+1][y+1]
+			local gridValue = board[x+1][y+1]
 			if gridValue == 1 then
 				love.graphics.setLineWidth(2)
 				love.graphics.circle('line', (x*cellWidth+cellWidth/2), (y*cellHeight+cellHeight/2), cellWidth*0.25)
