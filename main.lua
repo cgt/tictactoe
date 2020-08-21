@@ -6,7 +6,7 @@ function love.load()
 	cellWidth = VW/3
 	cellHeight = VH/3
 
-	board = {{'', '', ''}, {'', 'X', ''}, {'', '', ''}}
+	board = {{'', '', ''}, {'', 'X', ''}, {'', '', 'O'}}
 	selected = {x = 0, y = 0}
 end
 
@@ -64,6 +64,8 @@ function love.draw()
 			local gridValue = board[x+1][y+1]
 			if gridValue == 'X' then
 				drawCross(x, y)
+			elseif gridValue == 'O' then
+				drawCircle(x, y)
 			end
 
 			if x == selected.x and y == selected.y then
