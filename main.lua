@@ -22,7 +22,7 @@ function love.keypressed(key)
 		selected.y = clamp(selected.y - 1)
 	elseif key == 'l' or key == 'right' then
 		selected.x = clamp(selected.x + 1)
-	elseif key == 'enter' then
+	elseif key == 'return' then
 		local x = selected.x + 1
 		local y = selected.y + 1
 		grid[x][y] = grid[x][y] + 1
@@ -55,13 +55,15 @@ function love.draw()
 	for x=0,2 do
 		for y=0,2 do
 			setDefaults()
-			local gridValue = grid[x+1][y+1]
 			love.graphics.rectangle('line', x*cellWidth, y*cellHeight, cellWidth, cellHeight)
+
+			local gridValue = grid[x+1][y+1]
 			if gridValue == 1 then
 				love.graphics.setLineWidth(2)
 				love.graphics.circle('line', (x+cellWidth)/2, (y+cellHeight)/2, cellWidth*0.25)
 				setDefaults()
 			end
+
 			if x == selected.x and y == selected.y then
 				setSelectionColor()
 				local offset = 5
