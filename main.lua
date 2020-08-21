@@ -41,10 +41,6 @@ local function setSelectionColor()
 	love.graphics.setColor(1, 1, 1)
 end
 
-local function setHighlightColor()
-	love.graphics.setColor(0.16, 0.32, 0.75)
-end
-
 local function setDefaults()
 	setDefaultColor()
 	love.graphics.setLineWidth(1)
