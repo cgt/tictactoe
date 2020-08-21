@@ -42,6 +42,7 @@ local function setSelectionColor()
 end
 
 local function setDefaults()
+	love.graphics.reset()
 	setDefaultColor()
 	love.graphics.setLineWidth(1)
 end
@@ -56,10 +57,10 @@ function love.draw()
 
 			local gridValue = board[x+1][y+1]
 			if gridValue == 1 then
-				local oldLineWidth = love.graphics.getLineWidth()
+				love.graphics.push("all")
 				love.graphics.setLineWidth(2)
 				love.graphics.circle('line', (x*cellWidth+cellWidth/2), (y*cellHeight+cellHeight/2), cellWidth*0.25)
-				love.graphics.setLineWidth(oldLineWidth)
+				love.graphics.pop()
 			end
 
 			if x == selected.x and y == selected.y then
