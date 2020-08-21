@@ -37,9 +37,6 @@ function love.keypressed(key)
 	end
 end
 
-function love.update(dt)
-end
-
 local function drawCircle(x, y)
 	love.graphics.push("all")
 	love.graphics.setLineWidth(2)
