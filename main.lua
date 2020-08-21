@@ -57,6 +57,12 @@ local function drawCircle(x, y)
 	love.graphics.pop()
 end
 
+local function drawCursor(x, y)
+	setSelectionColor()
+	local offset = 5
+	love.graphics.rectangle('line', x*cellWidth+offset, y*cellHeight+offset, cellWidth-(offset*2), cellHeight-(offset*2))
+end
+
 function love.draw()
 	for x=0,2 do
 		for y=0,2 do
@@ -69,9 +75,7 @@ function love.draw()
 			end
 
 			if x == selected.x and y == selected.y then
-				setSelectionColor()
-				local offset = 5
-				love.graphics.rectangle('line', x*cellWidth+offset, y*cellHeight+offset, cellWidth-(offset*2), cellHeight-(offset*2))
+				drawCursor(x, y)
 			end
 		end
 	end
