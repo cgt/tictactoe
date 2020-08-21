@@ -1,6 +1,11 @@
 lu = require 'luaunit'
 
 local function winner(board)
+	for row, columns in ipairs(board) do
+		if columns[1] == 'X' then
+			return 'X'
+		end
+	end
 	if board[1][1] == 'X' then
 		return 'X'
 	end
