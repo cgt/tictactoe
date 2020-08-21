@@ -43,6 +43,14 @@ local function drawCircle(x, y)
 	love.graphics.pop()
 end
 
+local function drawX(x, y)
+	love.graphics.push("all")
+	love.graphics.setLineWidth(2)
+	love.graphics.line(x*cellWidth+cellWidth*0.25, y*cellHeight+cellHeight*0.25, x*cellWidth+cellWidth*0.75, y*cellHeight+cellHeight*0.75)
+	love.graphics.line(x*cellWidth+cellWidth*0.25, y*cellHeight+cellHeight*0.75, x*cellWidth+cellWidth*0.75, y*cellHeight+cellHeight*0.25)
+	love.graphics.pop()
+end
+
 local function drawCursor(x, y)
 	local offset = 5
 	love.graphics.rectangle('line', x*cellWidth+offset, y*cellHeight+offset, cellWidth-(offset*2), cellHeight-(offset*2))
@@ -55,7 +63,7 @@ function love.draw()
 
 			local gridValue = board[x+1][y+1]
 			if gridValue == 1 then
-				drawCircle(x, y)
+				drawX(x, y)
 			end
 
 			if x == selected.x and y == selected.y then
