@@ -58,7 +58,6 @@ local function drawCircle(x, y)
 end
 
 local function drawCursor(x, y)
-	setSelectionColor()
 	local offset = 5
 	love.graphics.rectangle('line', x*cellWidth+offset, y*cellHeight+offset, cellWidth-(offset*2), cellHeight-(offset*2))
 end
