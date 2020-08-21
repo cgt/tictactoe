@@ -10,28 +10,38 @@ end
 local function clamp(n)
 	local min = 0
 	local max = 2
-	if n < min then
-		return min
-	elseif n > max then
-		return max
-	else
-		return n
-	end
+	return math.min(max, math.max(min, n))
 end
 
 function love.keypressed(key)
-	if key == 'h' then
+	if key == 'h' or key == 'left' then
 		selected.y = clamp(selected.y - 1)
-	elseif key == 'j' then
+	elseif key == 'j' or key == 'down' then
 		selected.x = clamp(selected.x + 1)
-	elseif key == 'k' then
+	elseif key == 'k' or key == 'up' then
 		selected.x = clamp(selected.x - 1)
-	elseif key == 'l' then
+	elseif key == 'l' or key == 'right' then
 		selected.y = clamp(selected.y + 1)
+	elseif key == 'enter' then
+		local x = selected.x + 1
+		local y = selected.y + 1
+		grid[x][y] = grid[x][y] + 1
 	end
 end
 
 function love.update(dt)
+end
+
+local function setDefaultColor()
+	love.graphics.setColor(1, 1, 1)
+end
+
+local function setSelectionColor()
+	love.graphics.setColor(1, 1, 1)
+end
+
+local function setHighlightColor()
+	love.graphics.setColor(0.16, 0.32, 0.75)
 end
 
 function love.draw()
@@ -39,10 +49,16 @@ function love.draw()
 	local cellHeight = VH/3
 	for x=0,2 do
 		for y=0,2 do
+			local gridValue = grid[x+1][y+1]
+			setDefaultColor()
+			love.graphics.rectangle('line', x*cellWidth, y*cellHeight, cellWidth, cellHeight)
+			if gridValue == 1 then
+				love.graphics.circle('line', (x+cellWidth)/2, (y+cellHeight)/2, cellWidth*0.25)
+			end
 			if x == selected.x and y == selected.y then
-				love.graphics.rectangle('fill', y*cellWidth, x*cellHeight, cellWidth, cellHeight)
-			else 
-				love.graphics.rectangle('line', y*cellWidth, x*cellHeight, cellWidth, cellHeight)
+				setSelectionColor()
+				local offset = 5
+				love.graphics.rectangle('line', x*cellWidth+offset, y*cellHeight+offset, cellWidth-(offset*2), cellHeight-(offset*2))
 			end
 		end
 	end
