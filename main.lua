@@ -3,6 +3,9 @@ function love.load()
 	VH = 600
 	love.window.setMode(VW, VH)
 
+	cellWidth = VW/3
+	cellHeight = VH/3
+
 	board = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}
 	selected = {x = 0, y = 0}
 end
@@ -48,8 +51,6 @@ local function setDefaults()
 end
 
 function love.draw()
-	local cellWidth = VW/3
-	local cellHeight = VH/3
 	for x=0,2 do
 		for y=0,2 do
 			setDefaults()
