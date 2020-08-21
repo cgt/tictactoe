@@ -43,7 +43,7 @@ local function drawCircle(x, y)
 	love.graphics.pop()
 end
 
-local function drawX(x, y)
+local function drawCross(x, y)
 	love.graphics.push("all")
 	love.graphics.setLineWidth(2)
 	love.graphics.line(x*cellWidth+cellWidth*0.25, y*cellHeight+cellHeight*0.25, x*cellWidth+cellWidth*0.75, y*cellHeight+cellHeight*0.75)
@@ -63,7 +63,7 @@ function love.draw()
 
 			local gridValue = board[x+1][y+1]
 			if gridValue == 1 then
-				drawX(x, y)
+				drawCross(x, y)
 			end
 
 			if x == selected.x and y == selected.y then
