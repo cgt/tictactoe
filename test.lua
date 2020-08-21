@@ -31,6 +31,13 @@ function testWinDetection()
 		{'', '', ''},
 	}
 	lu.assertEquals(winner(fullRow2), 'X')
+
+	fullRow3 = {
+		{'', '', ''},
+		{'X', 'X', 'X'},
+		{'', '', ''},
+	}
+	lu.assertEquals(winner(fullRow3), 'X')
 end
 
 os.exit(lu.LuaUnit.run())
