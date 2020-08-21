@@ -50,6 +50,13 @@ local function setDefaults()
 	love.graphics.setLineWidth(1)
 end
 
+local function drawCircle(x, y)
+	love.graphics.push("all")
+	love.graphics.setLineWidth(2)
+	love.graphics.circle('line', (x*cellWidth+cellWidth/2), (y*cellHeight+cellHeight/2), cellWidth*0.25)
+	love.graphics.pop()
+end
+
 function love.draw()
 	for x=0,2 do
 		for y=0,2 do
@@ -58,10 +65,7 @@ function love.draw()
 
 			local gridValue = board[x+1][y+1]
 			if gridValue == 1 then
-				love.graphics.push("all")
-				love.graphics.setLineWidth(2)
-				love.graphics.circle('line', (x*cellWidth+cellWidth/2), (y*cellHeight+cellHeight/2), cellWidth*0.25)
-				love.graphics.pop()
+				drawCircle(x, y)
 			end
 
 			if x == selected.x and y == selected.y then
