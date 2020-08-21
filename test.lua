@@ -77,6 +77,13 @@ function testWinDetection()
 		{'', 'O', ''},
 	}
 	lu.assertEquals(winner(fullMiddleColumn), 'O')
+
+	fullRightColumn = {
+		{'', '', 'O'},
+		{'', '', 'O'},
+		{'', '', 'O'},
+	}
+	lu.assertEquals(winner(fullRightColumn), 'O')
 end
 
 os.exit(lu.LuaUnit.run())
