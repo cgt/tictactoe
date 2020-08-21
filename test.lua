@@ -2,7 +2,7 @@ lu = require 'luaunit'
 
 local function winner(board)
 	for row, columns in ipairs(board) do
-		if columns[1] == 'X' and columns[3] == 'X' then
+		if columns[1] == 'X' and columns[2] == 'X' and columns[3] == 'X' then
 			return 'X'
 		end
 	end
@@ -44,6 +44,13 @@ function testWinDetection()
 		{'X', 'X', ''},
 	}
 	lu.assertNil(winner(twoMovesNoWinner))
+
+	twoMovesNoWinner2 = {
+		{'', '', ''},
+		{'', '', ''},
+		{'X', '', 'X'},
+	}
+	lu.assertNil(winner(twoMovesNoWinner2))
 end
 
 os.exit(lu.LuaUnit.run())
