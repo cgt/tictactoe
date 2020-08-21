@@ -52,7 +52,6 @@ function testWinDetection()
 	}
 	lu.assertNil(winner(twoMovesNoWinner2))
 
-
 	fullRowO = {
 		{'O', 'O', 'O'},
 		{'', '', ''},
