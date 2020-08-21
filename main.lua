@@ -36,16 +36,6 @@ end
 function love.update(dt)
 end
 
-local function setDefaultColor()
-	love.graphics.setColor(1, 1, 1)
-end
-
-local function setDefaults()
-	love.graphics.reset()
-	setDefaultColor()
-	love.graphics.setLineWidth(1)
-end
-
 local function drawCircle(x, y)
 	love.graphics.push("all")
 	love.graphics.setLineWidth(2)
@@ -61,7 +51,6 @@ end
 function love.draw()
 	for x=0,2 do
 		for y=0,2 do
-			setDefaults()
 			love.graphics.rectangle('line', x*cellWidth, y*cellHeight, cellWidth, cellHeight)
 
 			local gridValue = board[x+1][y+1]
