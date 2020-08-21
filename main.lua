@@ -25,7 +25,8 @@ function love.keypressed(key)
 	elseif key == 'return' then
 		local x = selected.x + 1
 		local y = selected.y + 1
-		grid[x][y] = grid[x][y] + 1
+		local currentValue = grid[x][y]
+		grid[x][y] = (currentValue == 0 and 1) or 0
 	end
 end
 
