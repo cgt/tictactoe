@@ -60,7 +60,7 @@ function love.draw()
 			local gridValue = grid[x+1][y+1]
 			if gridValue == 1 then
 				love.graphics.setLineWidth(2)
-				love.graphics.circle('line', (x+cellWidth)/2, (y+cellHeight)/2, cellWidth*0.25)
+				love.graphics.circle('line', (x*cellWidth+cellWidth/2), (y*cellHeight+cellHeight/2), cellWidth*0.25)
 				setDefaults()
 			end
 
