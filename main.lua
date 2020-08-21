@@ -56,9 +56,10 @@ function love.draw()
 
 			local gridValue = board[x+1][y+1]
 			if gridValue == 1 then
+				local oldLineWidth = love.graphics.getLineWidth()
 				love.graphics.setLineWidth(2)
 				love.graphics.circle('line', (x*cellWidth+cellWidth/2), (y*cellHeight+cellHeight/2), cellWidth*0.25)
-				setDefaults()
+				love.graphics.setLineWidth(oldLineWidth)
 			end
 
 			if x == selected.x and y == selected.y then
