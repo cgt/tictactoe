@@ -6,15 +6,6 @@ local function winner(board)
 			return 'X'
 		end
 	end
-	if board[1][1] == 'X' then
-		return 'X'
-	end
-	if board[2][1] == 'X' then
-		return 'X'
-	end
-	if board[3][1] == 'X' then
-		return 'X'
-	end
 	return nil
 end
 
