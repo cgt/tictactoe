@@ -40,10 +40,6 @@ local function setDefaultColor()
 	love.graphics.setColor(1, 1, 1)
 end
 
-local function setSelectionColor()
-	love.graphics.setColor(1, 1, 1)
-end
-
 local function setDefaults()
 	love.graphics.reset()
 	setDefaultColor()
