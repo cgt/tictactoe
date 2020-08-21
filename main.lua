@@ -6,7 +6,11 @@ function love.load()
 	cellWidth = VW/3
 	cellHeight = VH/3
 
-	board = {{'', '', ''}, {'', '', ''}, {'', '', ''}}
+	board = {
+		{'', '', ''},
+		{'', '', ''},
+		{'', '', ''}
+	}
 	selected = {x = 0, y = 0}
 	player = 'X'
 end
